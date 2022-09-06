@@ -26,18 +26,16 @@
                         <li><a href="{{route('add-bank')}}" key="t-add-bank">@lang('translation.Add_Bank')</a></li>
                     </ul>
                 </li>
-{{--                <li>--}}
-{{--                    <a href="#" class="waves-effect">--}}
-{{--                        <i class="bx bxs-bank"></i>--}}
-{{--                        <span key="t-banks">@lang('translation.Banks')</span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-money"></i>
                         <span key="t-cheques">@lang('translation.Cheques')</span>
                     </a>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('add-cheque')}}" key="t-add-cheque">@lang('translation.Add_Cheque')</a></li>
+                    </ul>
                 </li>
 
 {{--                <li>--}}

@@ -33,3 +33,7 @@ Route::get('/add-bank', function () {
 
 Route::post('store-bank', [App\Http\Controllers\BankController::class, 'store'])->name('store-bank');
 
+Route::get('/add-cheque', function () {
+    return view('add-cheque');
+})->name('add-cheque');
+
