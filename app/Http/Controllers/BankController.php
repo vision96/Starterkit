@@ -40,15 +40,11 @@ class BankController extends Controller
             $request->validate([
                 'bank_name' => 'required|max:100',
                 'bank_number' => 'required|max:100',
-                'branch_name' => 'required|max:100',
-                'branch_number' => 'required|max:100',
             ]);
 
            Bank::create([
                 'bank_name' => $request->bank_name,
                 'bank_number' => $request->bank_number,
-                'branch_name' => $request->branch_name,
-                'branch_number' => $request->branch_number,
             ]);
 
             return response()->json(['success' => 'تمت الاضافة بنجاح']);

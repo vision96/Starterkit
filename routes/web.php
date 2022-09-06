@@ -27,13 +27,17 @@ Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class
 //Language Translation
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
+//start bank routes
 Route::get('/add-bank', function () {
     return view('add-bank');
 })->name('add-bank');
-
 Route::post('store-bank', [App\Http\Controllers\BankController::class, 'store'])->name('store-bank');
+//Route::get('/show-banks', [App\Http\Controllers\BankController::class, 'index'])->name('show-bank');
+//end bank routes
 
-Route::get('/show-bank', [App\Http\Controllers\BankController::class, 'index'])->name('show-bank');
-Route::get('/add-cheque', [App\Http\Controllers\ChequeController::class, 'create'])->name('add-cheque');
-
+//start branch routes
+Route::get('/add-branch', [App\Http\Controllers\BranchController::class, 'create'])->name('add-branch');
+Route::post('store-branch', [App\Http\Controllers\BranchController::class, 'store'])->name('store-branch');
+//Route::get('/show-branches', [App\Http\Controllers\BranchController::class, 'index'])->name('show-branches');
+//end branch routes
 

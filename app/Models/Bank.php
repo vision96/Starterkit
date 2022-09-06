@@ -11,4 +11,12 @@ class Bank extends Model
 
     protected $guarded = ['id'];
 
+
+    public function cheques(){
+        return $this->hasMany(Cheque::class,'bank_id','id');
+    }
+
+    public function branches(){
+        return $this->hasMany(Branch::class,'bank_id','id');
+    }
 }

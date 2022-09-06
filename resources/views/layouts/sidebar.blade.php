@@ -7,10 +7,10 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" key="t-menu">@lang('translation.menu')</li>
+{{--                <li class="menu-title" key="t-menu">@lang('translation.menu')</li>--}}
 
                 <li>
-                    <a href="{{route('root')}}" class="waves-effect">
+{{--                    <a href="{{route('root')}}" class="waves-effect">--}}
                         <i class="bx bx-home-circle"></i>
                         <span key="t-dashboards">@lang('translation.dashboards')</span>
                     </a>
@@ -24,7 +24,9 @@
 
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('add-bank')}}" key="t-add-bank">@lang('translation.Add_Bank')</a></li>
-                        <li><a href="{{route('show-bank')}}" key="t-show-banks">@lang('translation.Show_Banks')</a></li>
+                        <li><a href="{{route('add-branch')}}" key="t-add-branch">@lang('translation.Add_Branch')</a></li>
+{{--                        <li><a href="{{route('show-banks')}}" key="t-show-banks">@lang('translation.Show_Banks')</a></li>--}}
+{{--                        <li><a href="{{route('show-branches')}}" key="t-show-branches">@lang('translation.Show_Branches')</a></li>--}}
                     </ul>
                 </li>
 
@@ -35,7 +37,7 @@
                     </a>
 
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('add-cheque')}}" key="t-add-cheque">@lang('translation.Add_Cheque')</a></li>
+                        <li><a href="" key="t-add-cheque">@lang('translation.Add_Cheque')</a></li>
                     </ul>
                 </li>
 

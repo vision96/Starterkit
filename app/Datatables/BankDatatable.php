@@ -67,8 +67,6 @@ class BankDatatable extends DataTable
             ['name' => 'id', 'title' => 'الرقم التعريفي', 'data' => 'id'],
             ['name' => 'bank_name', 'title' => ' اسم البنك', 'data' => 'bank_name'],
             ['name' => 'bank_number', 'title' => 'رقم البنك', 'data' => 'bank_number'],
-            ['name' => 'branch_name', 'title' => 'اسم الفرع', 'data' => 'branch_name'],
-            ['name' => 'branch_number', 'title' => 'رقم الفرع', 'data' => 'branch_number'],
         ];
     }
 
