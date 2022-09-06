@@ -10,20 +10,20 @@
     @endcomponent
 
     <div class="row">
-        <div class="col-xl-8">
+        <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
 
                     <form class="needs-validation" id="addBank" novalidate>
                         @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="validationCustom01" class="form-label" style="font-size: 17px;">@lang('translation.Bank_name')</label>
                                     <input type="text" class="form-control" id="validationCustom01" name="bank_name" placeholder="" required>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="validationCustom02" class="form-label" style="font-size: 17px;">@lang('translation.Bank_number')</label>
                                     <input type="text" class="form-control" id="validationCustom02" name="bank_number" placeholder="" required>
@@ -31,13 +31,13 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="validationCustom01" class="form-label" style="font-size: 17px;">@lang('translation.Branch_name')</label>
                                     <input type="text" class="form-control" id="validationCustom01" name="branch_name" placeholder="" required>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="validationCustom02" class="form-label" style="font-size: 17px;">@lang('translation.Branch_number')</label>
                                     <input type="text" class="form-control" id="validationCustom02" name="branch_number" placeholder="" required>

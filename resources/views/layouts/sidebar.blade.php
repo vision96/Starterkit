@@ -10,7 +10,7 @@
                 <li class="menu-title" key="t-menu">@lang('translation.menu')</li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{route('root')}}" class="waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span key="t-dashboards">@lang('translation.dashboards')</span>
                     </a>
@@ -23,8 +23,8 @@
                     </a>
 
                     <ul class="sub-menu" aria-expanded="false">
-{{--                        <li><a href="{{route('add-bank')}}" key="t-add-bank">@lang('translation.Add_Bank')</a></li>--}}
-                        <li><a href="{{route('show-bank')}}" key="t-show-banks">@lang('translation.Show_Banks')</a></li>
+                        <li><a href="{{route('add-bank')}}" key="t-add-bank">@lang('translation.Add_Bank')</a></li>
+{{--                        <li><a href="{{route('show-bank')}}" key="t-show-banks">@lang('translation.Show_Banks')</a></li>--}}
                     </ul>
                 </li>
 {{--                <li>--}}

@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6795be4b-bd1f-423f-a56f-cb91bf9da4d1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/20edd3296f84a08d264501947b05e77e29cd6fdb.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/20edd3296f84a08d264501947b05e77e29cd6fdb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BankController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BankController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/add-bank.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/add-bank.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/bd10c58f5aa9297b89a1c70083e7d81dadebdc37.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/bd10c58f5aa9297b89a1c70083e7d81dadebdc37.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/fefc3e3937f41b2b97b0c7d68dc7b848ba2923ea.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/fefc3e3937f41b2b97b0c7d68dc7b848ba2923ea.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,18 +156,18 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/wamp64/www/Starterkit/resources/css",
+    "last_opened_file_path": "C:/wamp64/www/Starterkit",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Starterkit" />
       <recent name="C:\wamp64\www\Starterkit\resources\css" />
       <recent name="C:\wamp64\www\Starterkit\resources\views\layouts" />
       <recent name="C:\wamp64\www\Starterkit\resources\views" />
       <recent name="C:\wamp64\www\Starterkit\app\Http\Controllers" />
-      <recent name="C:\wamp64\www\Starterkit\lang\ar" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\Starterkit\resources\views" />
@@ -186,7 +191,7 @@
       <updated>1662322315256</updated>
       <workItem from="1662322316534" duration="179000" />
       <workItem from="1662322572074" duration="7009000" />
-      <workItem from="1662364136197" duration="33249000" />
+      <workItem from="1662364136197" duration="33907000" />
     </task>
     <servers />
   </component>

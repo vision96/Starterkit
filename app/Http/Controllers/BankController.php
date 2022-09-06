@@ -19,13 +19,14 @@ class BankController extends Controller
         return $dtable->render('view-banks');
     }
 
-    /**
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('add-bank');
-    }
+//
+//    /**
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function create()
+//    {
+//        return view('add-bank');
+//    }
 
     /**
      * Store a newly created resource in storage.
