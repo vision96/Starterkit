@@ -22,7 +22,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('roo
 Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
-Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+//Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 //Language Translation
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
@@ -33,7 +33,7 @@ Route::get('/add-bank', function () {
 
 Route::post('store-bank', [App\Http\Controllers\BankController::class, 'store'])->name('store-bank');
 
-Route::get('/add-cheque', function () {
-    return view('add-cheque');
-})->name('add-cheque');
+Route::get('/show-bank', [App\Http\Controllers\BankController::class, 'index'])->name('show-bank');
+//Route::get('/add-cheque', [App\Http\Controllers\ChequeController::class, 'create'])->name('add-cheque');
+
 

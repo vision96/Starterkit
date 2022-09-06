@@ -64,15 +64,11 @@ class BankDatatable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
-            Column::make('bank_name'),
-            Column::make('bank_number'),
-            Column::make('branch_name'),
-            Column::make('branch_number')
-            ->exportable(false)
-            ->printable(false)
-            ->width(200)
-            ->addClass('text-center'),
+            ['name' => 'id', 'title' => 'الرقم التعريفي', 'data' => 'id'],
+            ['name' => 'bank_name', 'title' => ' اسم البنك', 'data' => 'bank_name'],
+            ['name' => 'bank_number', 'title' => 'رقم البنك', 'data' => 'bank_number'],
+            ['name' => 'branch_name', 'title' => 'اسم الفرع', 'data' => 'branch_name'],
+            ['name' => 'branch_number', 'title' => 'رقم الفرع', 'data' => 'branch_number'],
         ];
     }
 
