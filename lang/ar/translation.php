@@ -8,6 +8,7 @@ return [
     "Cheques" => "الشيكات",
     "Search" => "بحث",
     "Banks" => "بنوك",
+    "Bank" => "البنك",
     "Add_Bank" => "إضافة بنك",
     "Settings" => "الإعدادات",
     "Bank_name" => "إسم البنك",
@@ -20,4 +21,8 @@ return [
     "six_months_cheques" => "عدد الشيكات المستحقة خلال 6 أشهر القادمة",
     "Show_Banks" => "عرض البنوك",
     "Add_Cheque" => "إضافة شيك",
+    "cheque_number" => "رقم الشيك",
+    "select" => "اختر بنك",
+    "Add_Branch" => "إضافة فرع",
+    "Show_Branches" => "عرض الفروع"
 ];
