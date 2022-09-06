@@ -27,6 +27,7 @@ Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Language Translation
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
 
-
-Route::get('/show-bank', [App\Http\Controllers\BankController::class, 'index'])->name('show-bank');
+Route::get('/add-bank', [App\Http\Controllers\BankController::class, 'create'])->name('add-bank');
+Route::post('store-bank', [App\Http\Controllers\BankController::class, 'store'])->name('store-bank');
+//Route::get('/show-bank', [App\Http\Controllers\BankController::class, 'index'])->name('show-bank');
 
