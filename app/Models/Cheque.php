@@ -11,4 +11,8 @@ class Cheque extends Model
 
     protected $guarded = ['id'];
 
+    public function bank()
+    {
+        return $this->belongsTo(Bank::class);
+    }
 }
