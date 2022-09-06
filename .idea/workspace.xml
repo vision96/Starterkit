@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6795be4b-bd1f-423f-a56f-cb91bf9da4d1" name="Changes" comment="Create Cheque table and model">
-      <change beforePath="$PROJECT_DIR$/.idea/Starterkit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Starterkit.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-    </list>
+    <list default="true" id="6795be4b-bd1f-423f-a56f-cb91bf9da4d1" name="Changes" comment="Create Cheque table and model" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -193,7 +186,7 @@
       <workItem from="1662322572074" duration="7009000" />
       <workItem from="1662364136197" duration="33907000" />
       <workItem from="1662455193584" duration="331000" />
-      <workItem from="1662455540087" duration="428000" />
+      <workItem from="1662455540087" duration="795000" />
     </task>
     <task id="LOCAL-00001" summary="Create Cheque table and model">
       <created>1662455968623</created>

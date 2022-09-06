@@ -10,7 +10,7 @@
                 <li class="menu-title" key="t-menu"><?php echo app('translator')->get('translation.menu'); ?></li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="<?php echo e(route('root')); ?>" class="waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span key="t-dashboards"><?php echo app('translator')->get('translation.dashboards'); ?></span>
                     </a>
@@ -23,8 +23,7 @@
                     </a>
 
                     <ul class="sub-menu" aria-expanded="false">
-
-                        <li><a href="<?php echo e(route('show-bank')); ?>" key="t-show-banks"><?php echo app('translator')->get('translation.Show_Banks'); ?></a></li>
+                        <li><a href="<?php echo e(route('add-bank')); ?>" key="t-add-bank"><?php echo app('translator')->get('translation.Add_Bank'); ?></a></li>
                     </ul>
                 </li>
 

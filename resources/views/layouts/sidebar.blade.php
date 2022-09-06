@@ -24,7 +24,6 @@
 
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('add-bank')}}" key="t-add-bank">@lang('translation.Add_Bank')</a></li>
-{{--                        <li><a href="{{route('show-bank')}}" key="t-show-banks">@lang('translation.Show_Banks')</a></li>--}}
                     </ul>
                 </li>
 {{--                <li>--}}

@@ -32,5 +32,4 @@ Route::get('/add-bank', function () {
 })->name('add-bank');
 
 Route::post('store-bank', [App\Http\Controllers\BankController::class, 'store'])->name('store-bank');
-//Route::get('/show-bank', [App\Http\Controllers\BankController::class, 'index'])->name('show-bank');
 
