@@ -8,7 +8,7 @@
 <?php echo $__env->renderComponent(); ?>
 
 <div class="row">
-        <div class="col-xl-10">
+        <div class="col-xl-12">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mini-stats-wid">
