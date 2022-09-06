@@ -67,14 +67,7 @@
                 },
                 bank_number: {
                     required: true,
-                },
-                branch_name: {
-                    required: true,
-                },
-                branch_number: {
-                    required: true,
-                },
-
+                }
             },
             highlight: function(element) {
                 $(element).addClass('is-invalid');
