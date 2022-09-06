@@ -33,14 +33,14 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="validationCustom01" class="form-label" style="font-size: 17px;">@lang('translation.Branch_name')</label>
-                                    <input type="text" class="form-control" id="validationCustom01" name="branch_name" placeholder="" required>
+                                    <label for="validationCustom03" class="form-label" style="font-size: 17px;">@lang('translation.Branch_name')</label>
+                                    <input type="text" class="form-control" id="validationCustom03" name="branch_name" placeholder="" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3">
-                                    <label for="validationCustom02" class="form-label" style="font-size: 17px;">@lang('translation.Branch_number')</label>
-                                    <input type="text" class="form-control" id="validationCustom02" name="branch_number" placeholder="" required>
+                                    <label for="validationCustom04" class="form-label" style="font-size: 17px;">@lang('translation.Branch_number')</label>
+                                    <input type="text" class="form-control" id="validationCustom04" name="branch_number" placeholder="" required>
                                 </div>
                             </div>
                         </div>
