@@ -30,20 +30,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="validationCustom03" class="form-label" style="font-size: 17px;">@lang('translation.Branch_name')</label>
-                                    <input type="text" class="form-control" id="validationCustom03" name="branch_name" placeholder="" required>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3">
-                                    <label for="validationCustom04" class="form-label" style="font-size: 17px;">@lang('translation.Branch_number')</label>
-                                    <input type="text" class="form-control" id="validationCustom04" name="branch_number" placeholder="" required>
-                                </div>
-                            </div>
-                        </div>
                         <div>
                             <button class="btn btn-primary" type="submit">@lang('translation.Save')</button>
                         </div>
@@ -118,6 +104,7 @@
                                 'success'
                             )
                             $('input').val("");
+                            $('input').removeAttr('required');
                         }
                     },
                     error:function(response){
