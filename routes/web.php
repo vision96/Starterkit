@@ -48,7 +48,6 @@ Route::get('/show-cheques', [App\Http\Controllers\ChequeController::class, 'inde
 //end cheque routes
 
 //start chequeRecipients routes
-Route::get('/add-chequeRecipients', [App\Http\Controllers\ChequeRecipientController::class, 'create'])->name('add-chequeRecipients');
 Route::post('store-chequeRecipients', [App\Http\Controllers\ChequeRecipientController::class, 'store'])->name('store-chequeRecipients');
 Route::get('/show-chequeRecipients', [App\Http\Controllers\ChequeRecipientController::class, 'index'])->name('show-chequeRecipients');
 //end chequeRecipients routes

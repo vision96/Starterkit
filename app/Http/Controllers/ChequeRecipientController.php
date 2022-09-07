@@ -28,13 +28,7 @@ class ChequeRecipientController extends Controller
         }
         return view('view-chequeRecipients');
     }
-    /**
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('add-chequeRecipients');
-    }
+
     /**
      * Store a newly created resource in storage.
      *
