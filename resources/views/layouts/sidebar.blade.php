@@ -45,16 +45,12 @@
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bxs-cog"></i>
-                        <span key="t-settings">@lang('translation.Settings')</span>
+                     <a href="" class="waves-effect">
+                    <i class="bx bxs-cog"></i>
+                    <span key="t-settings">@lang('translation.Settings')</span>
                     </a>
-
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#" key="t-website-logo">@lang('translation.Website_Logo')</a></li>
-                        <li><a href="#" key="t-notification-settings">@lang('translation.Notification_Settings')</a></li>
-                    </ul>
                 </li>
+
             </ul>
         </div>
         <!-- Sidebar -->
