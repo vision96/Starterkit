@@ -29,6 +29,16 @@ class ChequeController extends Controller
                 {
                     return $data->bank->bank_name;
                 })
+                ->editColumn('status', function($data)
+                {
+                    if($data->status == 0){
+                        return trans('translation.paid');
+                    }elseif ($data->status == 1){
+                        return trans('translation.returned');
+                    }elseif ($data->status == 2){
+                        return trans('translation.canceled');
+                    }
+                })
                 ->make(true);
 
         }

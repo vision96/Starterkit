@@ -17,7 +17,7 @@
             <div class="card-body">
                 <table class="table table-bordered data-table">
                     <thead>
-                    <tr>
+                    <tr style="background-color: #dbdada;">
                         <th>@lang('translation.Id')</th>
                         <th>@lang('translation.cheque_number')</th>
                         <th>@lang('translation.Bank_name')</th>
