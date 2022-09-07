@@ -25,8 +25,8 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('add-bank')}}" key="t-add-bank">@lang('translation.Add_Bank')</a></li>
                         <li><a href="{{route('add-branch')}}" key="t-add-branch">@lang('translation.Add_Branch')</a></li>
-{{--                        <li><a href="{{route('show-banks')}}" key="t-show-banks">@lang('translation.Show_Banks')</a></li>--}}
-{{--                        <li><a href="{{route('show-branches')}}" key="t-show-branches">@lang('translation.Show_Branches')</a></li>--}}
+                        <li><a href="{{route('show-banks')}}" key="t-show-banks">@lang('translation.Show_Banks')</a></li>
+                        <li><a href="{{route('show-branches')}}" key="t-show-branches">@lang('translation.Show_Branches')</a></li>
                     </ul>
                 </li>
 
@@ -37,17 +37,24 @@
                     </a>
 
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="" key="t-add-cheque">@lang('translation.Add_Cheque')</a></li>
+                        <li><a href="{{route('add-cheque')}}" key="t-add-cheque">@lang('translation.Add_Cheque')</a></li>
+                        <li><a href="{{route('show-cheques')}}" key="t-show-cheques">@lang('translation.Show_Cheques')</a></li>
+                        <li><a href="#" key="t-show-recipients">@lang('translation.Show_Recipients')</a></li>
+
                     </ul>
                 </li>
 
-{{--                <li>--}}
-{{--                    <a href="#" class="waves-effect">--}}
-{{--                        <i class="bx bxs-cog"></i>--}}
-{{--                        <span key="t-settings">@lang('translation.Settings')</span>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bxs-cog"></i>
+                        <span key="t-settings">@lang('translation.Settings')</span>
+                    </a>
 
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="#" key="t-website-logo">@lang('translation.Website_Logo')</a></li>
+                        <li><a href="#" key="t-notification-settings">@lang('translation.Notification_Settings')</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->
