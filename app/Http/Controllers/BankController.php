@@ -2,23 +2,29 @@
 
 namespace App\Http\Controllers;
 
-
-use App\DataTables\BankDatatable;
 use App\Models\Bank;
 use Illuminate\Http\Request;
+use DataTables;
 
 class BankController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(BankDatatable $dtable)
+    public function index(Request $request)
     {
-        return $dtable->render('view-banks');
-    }
+        if ($request->ajax()) {
+            $data = Bank::select('*');
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->make(true);
+        }
 
+        return view('view-banks');
+    }
 //
 //    /**
 //     * @return \Illuminate\Http\Response

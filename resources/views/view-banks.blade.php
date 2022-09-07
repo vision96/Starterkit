@@ -2,6 +2,10 @@
 
 @section('title') @lang('translation.Show_Banks') @endsection
 
+@section('css')
+    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+@endsection
+
 @section('content')
 
     @component('components.breadcrumb')
@@ -9,48 +13,45 @@
         @slot('title') @lang('translation.Show_Banks') @endslot
     @endcomponent
 
-    <div class="content-body">
-        <!-- DOM - jQuery events table -->
-        <section id="dom">
-            <div class="row ml-3 mr-3">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <a class="heading-elements-toggle"><i
-                                    class="la la-ellipsis-v font-medium-2"></i></a>
-                            <div class="heading-elements">
-                                <ul class="list-inline mb-0">
-                                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                    <li><a data-action="close"><i class="ft-x"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-
-
-                        <div class="card-content collapse show">
-                            <div class="card-body card-dashboard table-responsive">
-                                {!!$dataTable->table()!!}
-                                <div class="justify-content-center d-flex">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered data-table">
+                    <thead>
+                    <tr>
+                        <th>@lang('translation.Id')</th>
+                        <th>@lang('translation.Bank_name')</th>
+                        <th>@lang('translation.Bank_number')</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
-        </section>
-    </div>
+        </div>
 
 @endsection
 
 @section('script')
 
-    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 
-    {!!$dataTable->scripts()!!}
+    <script type="text/javascript">
+        $(function () {
+
+            var table = $('.data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('show-banks') }}",
+                columns: [
+                    {data: 'id', name: 'id'},
+                    {data: 'bank_name', name: 'bank_name'},
+                    {data: 'bank_number', name: 'bank_number'},
+                ]
+            });
+
+        });
+    </script>
 @endsection
 
 
