@@ -18,7 +18,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <h5 class="text-muted fw-medium"> @lang('translation.number_of_cheques') </h5>
-                                    <h4 class="mb-0">10</h4>
+                                    <h4 class="mb-0">{{$cheques_count}}</h4>
                                 </div>
 
                                 <div class="flex-shrink-0 align-self-center">

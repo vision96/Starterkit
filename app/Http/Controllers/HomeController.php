@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cheque;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -36,7 +37,8 @@ class HomeController extends Controller
 
     public function root()
     {
-        return view('index');
+        $cheques_count = Cheque::all()->count();
+        return view('index',compact('cheques_count'));
     }
 
     /*Language Translation*/
