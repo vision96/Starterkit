@@ -25,7 +25,7 @@ return [
     "select" => "اختر ",
     "Add_Branch" => "إضافة فرع جديد",
     "Show_Cheques" => "عرض الشيكات",
-    "Show_Recipients" => "المستفيدين",
+    "Show_Recipients" => "المستفيدون",
     "Show_Branches" => "عرض الفروع",
     "cheque_recipient" => "اسم مستلم الشيك",
     "amount" => "المبلغ",
