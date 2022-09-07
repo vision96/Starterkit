@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bank;
 use App\Models\Branch;
 use Illuminate\Http\Request;
+use DataTables;
 
 class BranchController extends Controller
 {
@@ -13,9 +14,21 @@ class BranchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $data = Branch::with('bank')->select('branches.*');
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->editColumn('bank', function($data)
+                {
+                    return $data->bank->bank_name;
+                })
+                ->make(true);
 
+        }
+
+        return view('view-branches');
     }
     /**
      * @return \Illuminate\Http\Response
