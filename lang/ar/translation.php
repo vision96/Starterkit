@@ -41,4 +41,6 @@ return [
     "Recipient_Name" => "اسم المستفيد",
     "add_chequeRecipients" => "إضافة مستفيد جديد",
     "Created_at" => "تاريخ الإضافة",
+    "Phone_number" => "رقم هاتف الإشعارات",
+    "Upload" => "تحميل",
 ];
