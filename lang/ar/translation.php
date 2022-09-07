@@ -36,7 +36,7 @@ return [
     "canceled" => "ملغي",
     "Website_Logo" => "شعار الموقع",
     "Notification_Settings" => "إعدادات الإشعارات",
-    "Show_Cheques" => "عرض الشيكات",
+    "Website_Settings" => "إعدادات الموقع",
     "Show_Cheque_Recipients" => "عرض المستفيدين",
     "Recipient_Name" => "اسم المستفيد",
     "add_chequeRecipients" => "إضافة مستفيد جديد",

@@ -45,7 +45,7 @@
                 </li>
 
                 <li>
-                     <a href="" class="waves-effect">
+                     <a href="{{route('settings')}}" class="waves-effect">
                     <i class="bx bxs-cog"></i>
                     <span key="t-settings">@lang('translation.Settings')</span>
                     </a>
