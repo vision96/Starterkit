@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bank;
 use App\Models\Cheque;
+use App\Models\ChequeRecipient;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -24,6 +25,9 @@ class ChequeController extends Controller
                 ->editColumn('bank', function($data)
                 {
                     return $data->bank->bank_name;
+                })
+                ->editColumn('created_at', function ($request) {
+                    return $request->created_at->format('Y-m-d');
                 })
                 ->make(true);
 
@@ -63,6 +67,10 @@ class ChequeController extends Controller
                 'cheque_recipient' => $request->cheque_recipient,
                 'amount' => $request->amount,
                 'status' => $request->status,
+            ]);
+
+            ChequeRecipient::create([
+                'name' => $request->cheque_recipient,
             ]);
 
             return response()->json(['success' => 'تمت الاضافة بنجاح']);

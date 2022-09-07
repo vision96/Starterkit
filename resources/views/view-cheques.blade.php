@@ -25,6 +25,7 @@
                         <th>@lang('translation.cheque_recipient')</th>
                         <th>@lang('translation.amount')</th>
                         <th>@lang('translation.status')</th>
+                        <th>@lang('translation.Created_at')</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -55,6 +56,7 @@
                     {data: 'cheque_recipient', name: 'cheque_recipient'},
                     {data: 'amount', name: 'amount'},
                     {data: 'status', name: 'status'},
+                    {data: 'created_at', name: 'created_at'}
                 ]
             });
 
