@@ -32,12 +32,17 @@ Route::get('/add-bank', function () {
     return view('add-bank');
 })->name('add-bank');
 Route::post('store-bank', [App\Http\Controllers\BankController::class, 'store'])->name('store-bank');
-//Route::get('/show-banks', [App\Http\Controllers\BankController::class, 'index'])->name('show-bank');
+Route::get('/show-banks', [App\Http\Controllers\BankController::class, 'index'])->name('show-banks');
 //end bank routes
 
 //start branch routes
 Route::get('/add-branch', [App\Http\Controllers\BranchController::class, 'create'])->name('add-branch');
 Route::post('store-branch', [App\Http\Controllers\BranchController::class, 'store'])->name('store-branch');
-//Route::get('/show-branches', [App\Http\Controllers\BranchController::class, 'index'])->name('show-branches');
+Route::get('/show-branches', [App\Http\Controllers\BranchController::class, 'index'])->name('show-branches');
 //end branch routes
 
+//start cheque routes
+Route::get('/add-cheque', [App\Http\Controllers\ChequeController::class, 'create'])->name('add-cheque');
+Route::post('store-cheque', [App\Http\Controllers\ChequeController::class, 'store'])->name('store-cheque');
+Route::get('/show-cheques', [App\Http\Controllers\ChequeController::class, 'index'])->name('show-cheques');
+//end cheque routes
