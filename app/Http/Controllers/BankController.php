@@ -20,6 +20,9 @@ class BankController extends Controller
             $data = Bank::select('*');
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->editColumn('created_at', function ($request) {
+                    return $request->created_at->format('Y-m-d');
+                })
                 ->make(true);
         }
 
