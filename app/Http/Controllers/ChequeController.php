@@ -60,10 +60,12 @@ class ChequeController extends Controller
                 'status' => 'required'
             ]);
 
+            $date = date_format(date_create($request->exchange_date),"Y/m/d H:i:s");
+
             Cheque::create([
                 'cheque_number' => $request->cheque_number,
                 'bank_id' => $request->bank_id,
-                'exchange_date' => $request->exchange_date,
+                'exchange_date' => $date,
                 'cheque_recipient' => $request->cheque_recipient,
                 'amount' => $request->amount,
                 'status' => $request->status,
