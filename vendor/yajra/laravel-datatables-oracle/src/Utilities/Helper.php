@@ -2,10 +2,12 @@
 
 namespace Yajra\DataTables\Utilities;
 
+use Closure;
 use DateTime;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use ReflectionFunction;
 
 class Helper
 {
@@ -59,13 +61,22 @@ class Helper
      * @param  array|object  $param  parameter to call with callable
      * @return mixed
      *
-     * @throws \Exception
+     * @throws \ReflectionException
      */
     public static function compileContent($content, array $data, array|object $param)
     {
         if (is_string($content)) {
             return static::compileBlade($content, static::getMixedValue($data, $param));
-        } elseif (is_callable($content)) {
+        }
+
+        if ($content instanceof Closure) {
+            $reflection = new ReflectionFunction($content);
+            $arguments = $reflection->getParameters();
+
+            if (count($arguments) > 0) {
+                return app()->call($content, [$arguments[0]->name => $param]);
+            }
+
             return $content($param);
         }
 
@@ -78,8 +89,6 @@ class Helper
      * @param  string  $str
      * @param  array  $data
      * @return false|string
-     *
-     * @throws \Exception
      */
     public static function compileBlade($str, $data = [])
     {
@@ -341,7 +350,7 @@ class Helper
         return str_replace($replacements, $values, $json);
     }
 
-    public static function isJavascript(string|array|object $value, string $key): bool
+    public static function isJavascript(string|array|object|null $value, string $key): bool
     {
         if (empty($value) || is_array($value) || is_object($value)) {
             return false;

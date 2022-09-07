@@ -42,13 +42,6 @@ class QueryDataTable extends DataTableAbstract
     protected $limitCallback = null;
 
     /**
-     * Flag to skip total records count query.
-     *
-     * @var bool
-     */
-    protected bool $skipTotalRecords = false;
-
-    /**
      * Flag to keep the select bindings.
      *
      * @var bool
@@ -89,7 +82,7 @@ class QueryDataTable extends DataTableAbstract
      */
     public static function canCreate($source): bool
     {
-        return $source instanceof QueryBuilder;
+        return $source instanceof QueryBuilder && ! ($source instanceof EloquentBuilder);
     }
 
     /**
@@ -103,9 +96,7 @@ class QueryDataTable extends DataTableAbstract
     public function make($mDataSupport = true): JsonResponse
     {
         try {
-            $this->prepareQuery();
-
-            $results = $this->results();
+            $results = $this->prepareQuery()->results();
             $processed = $this->processResults($results, $mDataSupport);
             $data = $this->transform($results, $processed);
 
@@ -117,36 +108,22 @@ class QueryDataTable extends DataTableAbstract
 
     /**
      * Prepare query by executing count, filter, order and paginate.
+     *
+     * @return $this
      */
-    protected function prepareQuery(): void
+    protected function prepareQuery(): static
     {
         if (! $this->prepared) {
             $this->totalRecords = $this->totalCount();
 
-            if ($this->totalRecords) {
-                $this->filterRecords();
-                $this->ordering();
-                $this->paginate();
-            }
+            $this->filterRecords();
+            $this->ordering();
+            $this->paginate();
         }
 
         $this->prepared = true;
-    }
 
-    /**
-     * Count total items.
-     *
-     * @return int
-     */
-    public function totalCount(): int
-    {
-        if ($this->skipTotalRecords) {
-            $this->isFilterApplied = true;
-
-            return 1;
-        }
-
-        return $this->totalRecords ?: $this->count();
+        return  $this;
     }
 
     /**
@@ -216,24 +193,11 @@ class QueryDataTable extends DataTableAbstract
     }
 
     /**
-     * Skip total records and set the recordsTotal equals to recordsFiltered.
-     * This will improve the performance by skipping the total count query.
-     *
-     * @return static
-     */
-    public function skipTotalRecords(): self
-    {
-        $this->skipTotalRecords = true;
-
-        return $this;
-    }
-
-    /**
      * Keep the select bindings.
      *
-     * @return static
+     * @return $this
      */
-    public function keepSelectBindings(): self
+    public function keepSelectBindings(): static
     {
         $this->keepSelectBindings = true;
 
@@ -268,8 +232,6 @@ class QueryDataTable extends DataTableAbstract
                 $keyword = $this->getColumnSearchKeyword($index);
                 $this->compileColumnSearch($index, $column, $keyword);
             }
-
-            $this->isFilterApplied = true;
         }
     }
 
@@ -501,9 +463,9 @@ class QueryDataTable extends DataTableAbstract
      *
      * @param  string  $column
      * @param  callable  $callback
-     * @return static
+     * @return $this
      */
-    public function filterColumn($column, callable $callback): self
+    public function filterColumn($column, callable $callback): static
     {
         $this->columnDef['filter'][$column] = ['method' => $callback];
 
@@ -516,9 +478,9 @@ class QueryDataTable extends DataTableAbstract
      * @param  array  $columns
      * @param  string  $sql
      * @param  array  $bindings
-     * @return static
+     * @return $this
      */
-    public function orderColumns(array $columns, $sql, $bindings = []): self
+    public function orderColumns(array $columns, $sql, $bindings = []): static
     {
         foreach ($columns as $column) {
             $this->orderColumn($column, str_replace(':column', $column, $sql), $bindings);
@@ -533,11 +495,11 @@ class QueryDataTable extends DataTableAbstract
      * @param  string  $column
      * @param  string|\Closure  $sql
      * @param  array  $bindings
-     * @return static
+     * @return $this
      *
      * @internal string $1 Special variable that returns the requested order direction of the column.
      */
-    public function orderColumn($column, $sql, $bindings = []): self
+    public function orderColumn($column, $sql, $bindings = []): static
     {
         $this->columnDef['order'][$column] = compact('sql', 'bindings');
 
@@ -547,9 +509,9 @@ class QueryDataTable extends DataTableAbstract
     /**
      * Set datatables to do ordering with NULLS LAST option.
      *
-     * @return static
+     * @return $this
      */
-    public function orderByNullsLast(): self
+    public function orderByNullsLast(): static
     {
         $this->nullsLast = true;
 
@@ -561,9 +523,9 @@ class QueryDataTable extends DataTableAbstract
      * with additional where clause via callback.
      *
      * @param  callable  $callback
-     * @return static
+     * @return $this
      */
-    public function limit(callable $callback): self
+    public function limit(callable $callback): static
     {
         $this->limitCallback = $callback;
 
@@ -596,9 +558,9 @@ class QueryDataTable extends DataTableAbstract
      * @param  string  $name
      * @param  string|callable  $content
      * @param  bool|int  $order
-     * @return static
+     * @return $this
      */
-    public function addColumn($name, $content, $order = false): self
+    public function addColumn($name, $content, $order = false): static
     {
         $this->pushToBlacklist($name);
 
@@ -628,24 +590,7 @@ class QueryDataTable extends DataTableAbstract
             } else {
                 $this->query->whereIn($column, $values);
             }
-
-            $this->isFilterApplied = true;
         }
-    }
-
-    /**
-     * Count filtered items.
-     *
-     * @return int
-     */
-    protected function filteredCount(): int
-    {
-        $this->filteredRecords = $this->filteredRecords ?: $this->count();
-        if ($this->skipTotalRecords) {
-            $this->totalRecords = $this->filteredRecords;
-        }
-
-        return $this->filteredRecords;
     }
 
     /**
@@ -769,8 +714,6 @@ class QueryDataTable extends DataTableAbstract
                     } else {
                         $this->compileQuerySearch($query, $column, $keyword);
                     }
-
-                    $this->isFilterApplied = true;
                 });
         });
     }

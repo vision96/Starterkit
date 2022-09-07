@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6795be4b-bd1f-423f-a56f-cb91bf9da4d1" name="Changes" comment="Create Cheque table and model" />
+    <list default="true" id="6795be4b-bd1f-423f-a56f-cb91bf9da4d1" name="Changes" comment="translation file">
+      <change afterPath="$PROJECT_DIR$/resources/views/view-branches.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/view-cheques.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/BranchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/BranchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ChequeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ChequeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/ar/translation.php" beforeDir="false" afterPath="$PROJECT_DIR$/lang/ar/translation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/add-cheque.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/add-cheque.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/UPGRADE.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/UPGRADE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/CollectionDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/CollectionDataTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/Contracts/Formatter.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/Contracts/Formatter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/DataTableAbstract.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/DataTableAbstract.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/DataTables.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/DataTables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/EloquentDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/EloquentDataTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/Processors/DataProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/Processors/DataProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/Processors/RowProcessor.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/Processors/RowProcessor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/QueryDataTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/QueryDataTable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/Utilities/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/Utilities/Helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/Utilities/Request.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle/src/Utilities/Request.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -148,7 +178,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/wamp64/www/Starterkit",
+    "last_opened_file_path": "C:/wamp64/www/Starterkit/resources/views",
     "nodejs_package_manager_path": "npm",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2022.2.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
@@ -156,11 +186,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Starterkit\resources\views" />
+      <recent name="C:\wamp64\www\Starterkit\app\Datatables" />
       <recent name="C:\wamp64\www\Starterkit" />
       <recent name="C:\wamp64\www\Starterkit\resources\css" />
       <recent name="C:\wamp64\www\Starterkit\resources\views\layouts" />
-      <recent name="C:\wamp64\www\Starterkit\resources\views" />
-      <recent name="C:\wamp64\www\Starterkit\app\Http\Controllers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\Starterkit\resources\views" />
@@ -187,6 +217,7 @@
       <workItem from="1662364136197" duration="33907000" />
       <workItem from="1662455193584" duration="331000" />
       <workItem from="1662455540087" duration="795000" />
+      <workItem from="1662537471748" duration="8486000" />
     </task>
     <task id="LOCAL-00001" summary="Create Cheque table and model">
       <created>1662455968623</created>
@@ -195,7 +226,42 @@
       <option name="project" value="LOCAL" />
       <updated>1662455968623</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fix banks columns at ajax validation">
+      <created>1662503163345</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662503163345</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix css style for select form-control">
+      <created>1662503208144</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662503208144</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix routes">
+      <created>1662548147387</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1662548147387</updated>
+    </task>
+    <task id="LOCAL-00005" summary="View banks datatable fixes">
+      <created>1662548625010</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1662548625010</updated>
+    </task>
+    <task id="LOCAL-00006" summary="translation file">
+      <created>1662548720036</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662548720036</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +280,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Create Cheque table and model" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create Cheque table and model" />
+    <MESSAGE value="fix banks columns at ajax validation" />
+    <MESSAGE value="fix css style for select form-control" />
+    <MESSAGE value="upgrade files" />
+    <MESSAGE value="fix routes" />
+    <MESSAGE value="View banks datatable fixes" />
+    <MESSAGE value="translation file" />
+    <option name="LAST_COMMIT_MESSAGE" value="translation file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
