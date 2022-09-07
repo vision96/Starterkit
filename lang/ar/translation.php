@@ -37,4 +37,8 @@ return [
     "Website_Logo" => "شعار الموقع",
     "Notification_Settings" => "إعدادات الإشعارات",
     "Show_Cheques" => "عرض الشيكات",
+    "Show_Cheque_Recipients" => "عرض المستفيدين",
+    "Recipient_Name" => "اسم المستفيد",
+    "add_chequeRecipients" => "إضافة مستفيد جديد",
+    "Created_at" => "تاريخ الإضافة",
 ];
