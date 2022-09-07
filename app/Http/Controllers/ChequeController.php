@@ -22,12 +22,12 @@ class ChequeController extends Controller
             $data = Cheque::with('bank')->select('cheques.*');
             return Datatables::of($data)
                 ->addIndexColumn()
+                ->editColumn('created_at', function ($request) {
+                    return $request->created_at->format('Y-m-d');
+                })
                 ->editColumn('bank', function($data)
                 {
                     return $data->bank->bank_name;
-                })
-                ->editColumn('created_at', function ($request) {
-                    return $request->created_at->format('Y-m-d');
                 })
                 ->make(true);
 
