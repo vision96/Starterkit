@@ -24,6 +24,9 @@ class BranchController extends Controller
                 {
                     return $data->bank->bank_name;
                 })
+                ->editColumn('created_at', function ($request) {
+                    return $request->created_at->format('Y-m-d');
+                })
                 ->make(true);
 
         }

@@ -22,6 +22,7 @@
                         <th>@lang('translation.Branch_name')</th>
                         <th>@lang('translation.Branch_number')</th>
                         <th>@lang('translation.Bank_name')</th>
+                        <th>@lang('translation.Created_at')</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,6 +50,7 @@
                     {data: 'branch_name', name: 'branch_name'},
                     {data: 'branch_number', name: 'branch_number'},
                     {data: 'bank', name: 'bank.name'},
+                    {data: 'created_at', name: 'created_at'}
                 ]
             });
 
