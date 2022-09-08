@@ -7,10 +7,10 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-{{--                <li class="menu-title" key="t-menu">@lang('translation.menu')</li>--}}
+                <li class="menu-title" key="t-menu">@lang('translation.menu')</li>
 
                 <li>
-{{--                    <a href="{{route('root')}}" class="waves-effect">--}}
+                    <a href="{{route('root')}}" class="waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span key="t-dashboards">@lang('translation.dashboards')</span>
                     </a>
