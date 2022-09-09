@@ -24,6 +24,7 @@
                     <th style="width: 85px;">@lang('translation.Id')</th>
                         <th>@lang('translation.Recipient_Name')</th>
                         <th>@lang('translation.Created_at')</th>
+                        <th style="width: 150px;">@lang('translation.Actions')</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -55,6 +56,32 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    <div id="editRecipientModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myLargeModalLabel">@lang('translation.Edit_recipient')</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" id="editRecipient">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" id="id" name="id" value="">
+
+                        <div class="mb-3">
+                            <label for="name">@lang('translation.Recipient_Name')</label>
+                            <input id="name" type="text" class="form-control" name="name" autocomplete="on" placeholder="">
+                        </div>
+
+                        <div class="mt-3 d-grid">
+                            <button class="btn btn-primary waves-effect waves-light" type="submit">@lang('translation.Save')</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 @endsection
 
@@ -74,7 +101,8 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
-                    {data: 'created_at', name: 'created_at'}
+                    {data: 'created_at', name: 'created_at'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
 
@@ -110,6 +138,78 @@
                         Swal.fire(
                             'فشلت العملية!',
                             'لا يمكن إضافة مستفيد جديد',
+                            'error'
+                        )
+                    }
+                }
+            });
+        });
+
+        function edit(id) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{route('recipient.edit','id')}}",
+                type: 'get',
+                data: {
+                    "id": id,
+                },
+                datatype: "json",
+                success: function(response) {
+                    $("#id").val(response.id);
+                    $("#name").val(response.name);
+                    var url = '{{route("recipient.update",":id")}}';
+                    url = url.replace(':id',response.id);
+                    $('#recipientUpdate').data('url',url);
+                    $('#editRecipientModal').modal('show');
+                },
+                error: function(response) {
+                    if (response != 0) {
+                        Swal.fire(
+                            'خطأ!',
+                            'لا يمكن تعديل هذا المستفيد',
+                            'error'
+                        )
+                    }
+                }
+            });
+
+        }
+
+        $('#editRecipient').on('submit',function(event){
+            event.preventDefault();
+            var name = $('#name').val();
+            var id = $('#id').val();
+            var url = "{{ route('recipient.update', ":id") }}";
+            url = url.replace(':id', id);
+
+            $.ajax({
+                url: url,
+                type:"POST",
+                data:{
+                    "name": name,
+                    "_token": "{{ csrf_token() }}",
+                },
+                success: function(response){
+                    if(response != 0){
+                        Swal.fire(
+                            'تمت العملية بنجاح!',
+                            'لقد قمت بتعديل مستفيد !',
+                            'success'
+                        )
+                        $('input').val("");
+                        $('#editRecipientModal').modal('hide');
+                        $('.data-table').DataTable().ajax.reload();
+                    }
+                },
+                error:function(response){
+                    if(response!=0){
+                        Swal.fire(
+                            'فشلت العملية!',
+                            'لا يمكن تعديل مستفيد',
                             'error'
                         )
                     }

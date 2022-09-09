@@ -23,6 +23,8 @@ class ChequeRecipientController extends Controller
                 ->editColumn('created_at', function ($request) {
                     return $request->created_at->format('Y-m-d');
                 })
+                ->addColumn('action', 'cheque_recipient.action')
+                ->rawColumns(['action'])
                 ->make(true);
 
         }
@@ -50,5 +52,45 @@ class ChequeRecipientController extends Controller
         } catch (\exception $ex) {
             return response()->json(['error' => 'هناك خطا ما ,حاول لاحقا', 'err' => $ex]);
         }
+    }
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\ChequeRecipient  $cheque_recipient
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(request $request)
+    {
+        $cheque_recipient = ChequeRecipient::findOrFail($request->id);
+        return response()->json($cheque_recipient);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,$id)
+    {
+
+        $request->validate([
+            'name'=>'required|max:100',
+        ]);
+
+        try{
+           $cheque_recipient = ChequeRecipient::findOrFail($id);
+
+            $cheque_recipient->name = $request->name;
+            $cheque_recipient->save();
+
+        return response()->json(['success'=>'تم التحديث بنجاح']);
+          }
+          catch(\exception $ex){
+              return response()->json(['error'=>'هناك خطا ما يرجى المحاولة لاحقا']);
+          }
     }
 }

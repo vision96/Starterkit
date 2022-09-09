@@ -43,4 +43,7 @@ return [
     "Created_at" => "تاريخ الإضافة",
     "Phone_number" => "رقم هاتف الإشعارات",
     "Upload" => "تحميل",
+    "Actions" => "الأحداث",
+    "Edit_recipient" => "تعديل مستفيد",
+    "View_cheques" => "عرض الشيكات"
 ];
