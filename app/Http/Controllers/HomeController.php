@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -38,7 +39,10 @@ class HomeController extends Controller
     public function root()
     {
         $cheques_count = Cheque::all()->count();
-        return view('index',compact('cheques_count'));
+        $cheques_due_5days_count = Cheque::all()->whereBetween('exchange_date',[Carbon::now(),Carbon::now()->addDays(5)])->count();
+        $cheques_due_6months_count = Cheque::all()->whereBetween('exchange_date',[Carbon::now(),Carbon::now()->addMonths(6)])->count();
+        $due_cheques_count = Cheque::all()->where('status','=',1)->count(); //status of مستحق
+        return view('index',compact('cheques_count','cheques_due_5days_count','cheques_due_6months_count','due_cheques_count'));
     }
 
     /*Language Translation*/

@@ -18,7 +18,7 @@ return [
     "Save" => "حفظ",
     "number_of_cheques" => "عدد الشيكات الكلي",
     "five_days_cheques" => "عدد الشيكات المستحقة خلال 5 أيام",
-    "six_months_cheques" => "عدد الشيكات المستحقة خلال 6 أشهر القادمة",
+    "six_months_cheques" => "عدد الشيكات المستحقة خلال 6 أشهر",
     "Show_Banks" => "عرض البنوك",
     "Add_Cheque" => "إضافة شيك جديد",
     "cheque_number" => "رقم الشيك",
@@ -45,5 +45,9 @@ return [
     "Upload" => "تحميل",
     "Actions" => "الأحداث",
     "Edit_recipient" => "تعديل مستفيد",
-    "View_cheques" => "عرض الشيكات"
+    "View_cheques" => "عرض الشيكات",
+    "Sender_name" => "اسم المرسل",
+    "SMS_token" => "SMS Token",
+    "SEO_settings" => "إعدادات SEO",
+    "Due_cheques" => "عدد الشيكات المستحقة",
 ];
