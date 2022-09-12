@@ -23,8 +23,6 @@
                     </a>
 
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{route('add-bank')}}" key="t-add-bank">@lang('translation.Add_Bank')</a></li>
-                        <li><a href="{{route('add-branch')}}" key="t-add-branch">@lang('translation.Add_Branch')</a></li>
                         <li><a href="{{route('show-banks')}}" key="t-show-banks">@lang('translation.Show_Banks')</a></li>
                         <li><a href="{{route('show-branches')}}" key="t-show-branches">@lang('translation.Show_Branches')</a></li>
                     </ul>
