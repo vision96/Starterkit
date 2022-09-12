@@ -33,14 +33,6 @@ class BranchController extends Controller
 
         return view('view-branches');
     }
-    /**
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $banks = Bank::all();
-        return view('add-branch',compact('banks'));
-    }
 
     /**
      * Store a newly created resource in storage.
