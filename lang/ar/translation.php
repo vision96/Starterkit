@@ -50,4 +50,5 @@ return [
     "SMS_token" => "SMS Token",
     "SEO_settings" => "إعدادات SEO",
     "Due_cheques" => "عدد الشيكات المستحقة",
+    "Close" => "إغلاق"
 ];
