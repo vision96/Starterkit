@@ -24,7 +24,7 @@ return [
     "cheque_number" => "رقم الشيك",
     "select" => "اختر ",
     "Add_Branch" => "إضافة فرع جديد",
-    "Show_Cheques" => "عرض الشيكات",
+    "Show_Cheques" => "كافة الشيكات",
     "Show_Recipients" => "المستفيدون",
     "Show_Branches" => "كافة الفروع",
     "cheque_recipient" => "اسم مستلم الشيك",

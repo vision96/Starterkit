@@ -62,12 +62,11 @@ class ChequeController extends Controller
     {
         try {
             $request->validate([
-                'cheque_number' => 'required|max:100',
+                'cheque_number' => 'required|max:100|unique:cheques,cheque_number',
                 'bank_id' => 'required|max:100',
                 'exchange_date' => 'required',
                 'cheque_recipient' => 'required|max:100',
                 'amount' => 'required',
-                'status' => 'required'
             ]);
 
             $date = date_format(date_create($request->exchange_date),"Y/m/d H:i:s");
@@ -78,7 +77,6 @@ class ChequeController extends Controller
                 'exchange_date' => $date,
                 'cheque_recipient' => $request->cheque_recipient,
                 'amount' => $request->amount,
-                'status' => $request->status,
             ]);
 
             ChequeRecipient::create([

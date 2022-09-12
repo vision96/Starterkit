@@ -4,6 +4,14 @@
 
 @section('css')
     <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <style>
+        .required:after {
+            content:" *";
+            color: red;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -14,6 +22,7 @@
     @endcomponent
 
         <div class="card">
+
             <div class="card-body">
                 <table class="table table-bordered data-table">
                     <thead>
@@ -32,7 +41,7 @@
                 </table>
             </div>
         </div>
-
+    @include('add-cheque')
 @endsection
 
 @section('script')
@@ -40,7 +49,22 @@
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 
+    <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
+    <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.ajaxsubmit@1.0.3/dist/jquery.ajaxsubmit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
     <script type="text/javascript">
+
+        $(function () {
+            $('#datepicker').datepicker();
+        });
+
         $(function () {
 
             var table = $('.data-table').DataTable({
@@ -58,6 +82,76 @@
                 ]
             });
 
+        });
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $("#addCheque").validate({
+            rules: {
+                cheque_number: {
+                    required: true,
+                },
+                bank_id: {
+                    required: true,
+                },
+                exchange_date: {
+                    required: true,
+                },
+                cheque_recipient: {
+                    required: true,
+                },
+                amount: {
+                    required: true,
+                },
+            },
+            highlight: function (element) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element) {
+                $(element).removeClass('is-invalid');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            submitHandler: function (form) {
+                var formData = new FormData(form);
+                $.ajax({
+                    url: "{{route('store-cheque')}}",
+                    type: 'post',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response != 0) {
+                            Swal.fire(
+                                'تمت العملية بنجاح!',
+                                'لقد قمت بإضافة شيك جديد!',
+                                'success'
+                            )
+                            $('#addChequeModal').modal('hide');
+                            $('.data-table').DataTable().ajax.reload();
+                            $("#addCheque")[0].reset();
+                        }
+                    },
+                    error: function (response) {
+                        if (response != 0) {
+                            Swal.fire(
+                                'فشلت العملية!',
+                                'لا يمكن إضافة شيك جديد',
+                                'error'
+                            )
+                        }
+                    }
+                });
+
+            }
         });
     </script>
 @endsection
