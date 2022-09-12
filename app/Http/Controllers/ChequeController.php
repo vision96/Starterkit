@@ -88,4 +88,16 @@ class ChequeController extends Controller
             return response()->json(['error' => 'هناك خطا ما ,حاول لاحقا', 'err' => $ex]);
         }
     }
+
+    public function getChequeNumber($bank_id){
+        $last_cheque = Cheque::query()->where('bank_id',$bank_id)->orderBy('created_at', 'desc')->first();
+        if($last_cheque != null){
+            $last_cheque_number = $last_cheque->cheque_number;
+            $current_cheque_number = $last_cheque_number + 1;
+            return response()->json($current_cheque_number);
+        }else{
+            return response()->json(1);
+        }
+
+    }
 }

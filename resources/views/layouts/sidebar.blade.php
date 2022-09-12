@@ -35,6 +35,7 @@
                     </a>
 
                     <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('show-cheques')}}" key="t-show-cheques">@lang('translation.Show_Cheques')</a></li>
                         <li><a href="{{route('show-chequeRecipients')}}" key="t-show-recipients">@lang('translation.Show_Recipients')</a></li>
                     </ul>
                 </li>

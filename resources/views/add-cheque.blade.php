@@ -14,14 +14,6 @@ $banks = \App\Models\Bank::all();
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="cheque_number" class="form-label required"
-                                       style="font-size: 17px;">@lang('translation.cheque_number')</label>
-                                <input type="text" class="form-control" id="cheque_number" name="cheque_number"
-                                       placeholder="" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
                                 <label class="control-label required"
                                        style="font-size: 17px;">@lang('translation.Bank')</label>
                                 <select class="form-control select2" name="bank_id">
@@ -32,6 +24,14 @@ $banks = \App\Models\Bank::all();
                                         @endforeach
                                     @endisset
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="cheque_number" class="form-label required"
+                                       style="font-size: 17px;">@lang('translation.cheque_number')</label>
+                                <input type="text" class="form-control" id="cheque_number" name="cheque_number"
+                                       placeholder="" required>
                             </div>
                         </div>
                         <div class="col-md-6">

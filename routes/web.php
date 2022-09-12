@@ -45,6 +45,7 @@ Route::get('/show-branches', [App\Http\Controllers\BranchController::class, 'ind
 Route::get('/add-cheque', [App\Http\Controllers\ChequeController::class, 'create'])->name('add-cheque');
 Route::post('store-cheque', [App\Http\Controllers\ChequeController::class, 'store'])->name('store-cheque');
 Route::get('/show-cheques', [App\Http\Controllers\ChequeController::class, 'index'])->name('show-cheques');
+Route::get('/cheque-number/{id}', [App\Http\Controllers\ChequeController::class, 'getChequeNumber'])->name('cheque_number.view');
 //end cheque routes
 
 //start chequeRecipients routes

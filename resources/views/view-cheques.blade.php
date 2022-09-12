@@ -22,7 +22,9 @@
     @endcomponent
 
         <div class="card">
-
+            <div class="card-header">
+                <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#addChequeModal">@lang('translation.Add_Cheque')</button>
+            </div>
             <div class="card-body">
                 <table class="table table-bordered data-table">
                     <thead>
@@ -153,6 +155,27 @@
 
             }
         });
+
+
+        $(document).ready(function () {
+            $('select[name="bank_id"]').on('change', function() {
+                var bank_id = $(this).val();
+                if (bank_id) {
+                    $.ajax({
+                        url:'/cheque-number/' + bank_id,
+                        type: 'GET' ,
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#cheque_number').val(data);
+                        }
+                    })
+                } else {
+                    $('#cheque_number').empty();
+                }
+            });
+        });
+
+
     </script>
 @endsection
 
