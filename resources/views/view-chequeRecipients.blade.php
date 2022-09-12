@@ -14,9 +14,9 @@
     @endcomponent
 
         <div class="card">
-            <div class="card-header">
-                    <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">@lang('translation.add_chequeRecipients')</button>
-            </div>
+{{--            <div class="card-header">--}}
+{{--                    <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">@lang('translation.add_chequeRecipients')</button>--}}
+{{--            </div>--}}
             <div class="card-body">
                 <table class="table table-bordered data-table">
                     <thead>
