@@ -18,7 +18,6 @@
                 <table class="table table-bordered data-table">
                     <thead>
                     <tr style="background-color: #dbdada;">
-                    <th>@lang('translation.Id')</th>
                         <th>@lang('translation.Bank_name')</th>
                         <th>@lang('translation.Bank_number')</th>
                         <th>@lang('translation.Created_at')</th>
@@ -45,7 +44,6 @@
                 serverSide: true,
                 ajax: "{{ route('show-banks') }}",
                 columns: [
-                    {data: 'id', name: 'id'},
                     {data: 'bank_name', name: 'bank_name'},
                     {data: 'bank_number', name: 'bank_number'},
                     {data: 'created_at', name: 'created_at'}

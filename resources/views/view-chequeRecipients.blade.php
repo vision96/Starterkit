@@ -21,7 +21,6 @@
                 <table class="table table-bordered data-table">
                     <thead>
                     <tr style="background-color: #dbdada;">
-                    <th style="width: 85px;">@lang('translation.Id')</th>
                         <th>@lang('translation.Recipient_Name')</th>
                         <th>@lang('translation.Created_at')</th>
                         <th style="width: 150px;">@lang('translation.Actions')</th>
@@ -99,7 +98,6 @@
                 serverSide: true,
                 ajax: "{{ route('show-chequeRecipients') }}",
                 columns: [
-                    {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
