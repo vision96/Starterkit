@@ -34,11 +34,11 @@ class ChequeController extends Controller
                     if($data->status == 0){
                         return trans('translation.paid');
                     }elseif ($data->status == 1){
-                        return trans('translation.returned');
-                    }elseif ($data->status == 2){
                         return trans('translation.canceled');
                     }
                 })
+                ->addColumn('action', 'cheques.action')
+                ->rawColumns(['action'])
                 ->make(true);
 
         }
@@ -99,5 +99,52 @@ class ChequeController extends Controller
             return response()->json(1);
         }
 
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(request $request)
+    {
+        $cheque = Cheque::findOrFail($request->id);
+        return response()->json($cheque);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,$id)
+    {
+
+        $request->validate([
+            'cheque_number' => 'required|max:100|unique:cheques,cheque_number',
+            'bank_id' => 'required|max:100',
+            'exchange_date' => 'required',
+            'cheque_recipient' => 'required|max:100',
+            'amount' => 'required',
+        ]);
+
+        try{
+            $cheque = Cheque::findOrFail($id);
+
+            $date = date_format(date_create($request->exchange_date),"Y/m/d H:i:s");
+            $cheque->cheque_number = $request->cheque_number;
+            $cheque->exchange_date = $date;
+            $cheque->cheque_recipient = $request->cheque_recipient;
+            $cheque->amount = $request->amount;
+
+            $cheque->save();
+
+            return response()->json(['success'=>'تم التحديث بنجاح']);
+        }
+        catch(\exception $ex){
+            return response()->json(['error'=>'هناك خطا ما يرجى المحاولة لاحقا']);
+        }
     }
 }

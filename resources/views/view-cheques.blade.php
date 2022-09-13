@@ -21,29 +21,31 @@
         @slot('title') @lang('translation.Show_Cheques') @endslot
     @endcomponent
 
-        <div class="card">
-            <div class="card-header">
-                <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#addChequeModal">@lang('translation.Add_Cheque')</button>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered data-table">
-                    <thead>
-                    <tr style="background-color: #dbdada;">
-                        <th>@lang('translation.cheque_number')</th>
-                        <th>@lang('translation.Bank_name')</th>
-                        <th>@lang('translation.exchange_date')</th>
-                        <th>@lang('translation.cheque_recipient')</th>
-                        <th>@lang('translation.amount')</th>
-                        <th>@lang('translation.status')</th>
-                        <th>@lang('translation.Created_at')</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
+    <div class="card">
+        <div class="card-header">
+            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#addChequeModal">@lang('translation.Add_Cheque')</button>
         </div>
+        <div class="card-body">
+            <table class="table table-bordered data-table">
+                <thead>
+                <tr style="background-color: #dbdada;">
+                    <th>@lang('translation.cheque_number')</th>
+                    <th>@lang('translation.Bank_name')</th>
+                    <th>@lang('translation.exchange_date')</th>
+                    <th>@lang('translation.cheque_recipient')</th>
+                    <th>@lang('translation.amount')</th>
+                    <th>@lang('translation.status')</th>
+                    <th>@lang('translation.Created_at')</th>
+                    <th style="width: 150px;">@lang('translation.Actions')</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
     @include('add-cheque')
+    @include('edit-cheque')
 @endsection
 
 @section('script')
@@ -80,7 +82,8 @@
                     {data: 'cheque_recipient', name: 'cheque_recipient'},
                     {data: 'amount', name: 'amount'},
                     {data: 'status', name: 'status'},
-                    {data: 'created_at', name: 'created_at'}
+                    {data: 'created_at', name: 'created_at'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
 
@@ -175,6 +178,107 @@
             });
         });
 
+        function edit(id) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: "{{route('cheque.edit','id')}}",
+                type: 'get',
+                data: {
+                    "id": id,
+                },
+                datatype: "json",
+                success: function(response) {
+                    $("#id").val(response.id);
+                    $("#cheque_number").val(response.cheque_number);
+                    $("#bank_id").val(response.bank_id);
+                    $("#exchange_date").val(response.exchange_date);
+                    $("#cheque_recipient").val(response.cheque_recipient);
+                    $("#amount").val(response.amount);
+                    $('#editChequeModal').modal('show');
+                },
+                error: function(response) {
+                    if (response != 0) {
+                        Swal.fire(
+                            'خطأ!',
+                            'لا يمكن تعديل هذا الشيك',
+                            'error'
+                        )
+                    }
+                }
+            });
+
+        }
+
+        $("#editCheque").validate({
+            rules: {
+                cheque_number: {
+                    required: true,
+                },
+                bank_id: {
+                    required: true,
+                },
+                exchange_date: {
+                    required: true,
+                },
+                cheque_recipient: {
+                    required: true,
+                },
+                amount: {
+                    required: true,
+                },
+            },
+            highlight: function (element) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element) {
+                $(element).removeClass('is-invalid');
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            submitHandler: function (form) {
+                var formData = new FormData(form);
+                var id = $('#id').val();
+                var url = "{{ route('cheque.update', ":id") }}";
+                url = url.replace(':id', id);
+                $.ajax({
+                    url: url,
+                    type: 'post',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response != 0) {
+                            Swal.fire(
+                                'تمت العملية بنجاح!',
+                                'لقد قمت بتعديل شيك!',
+                                'success'
+                            )
+                            $('#editChequeModal').modal('hide');
+                            $('.data-table').DataTable().ajax.reload();
+                            $("#editCheque")[0].reset();
+                        }
+                    },
+                    error: function (response) {
+                        if (response != 0) {
+                            Swal.fire(
+                                'فشلت العملية!',
+                                'لا يمكن تعديل شيك',
+                                'error'
+                            )
+                        }
+                    }
+                });
+
+            }
+        });
 
     </script>
 @endsection
