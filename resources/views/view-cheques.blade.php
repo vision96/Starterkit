@@ -61,7 +61,7 @@
                     {data: 'cheque_number', name: 'cheque_number'},
                     {data: 'bank', name: 'bank.name'},
                     {data: 'exchange_date', name: 'exchange_date'},
-                    {data: 'cheque_recipient', name: 'cheque_recipient'},
+                    {data: 'recipient', name: 'recipient.name'},
                     {data: 'amount', name: 'amount'},
                     {data: 'status', name: 'status'},
                     {data: 'created_at', name: 'created_at'},

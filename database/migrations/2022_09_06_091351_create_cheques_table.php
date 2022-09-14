@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('cheque_number');
             $table->BigInteger('bank_id')->unsigned();
             $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
+            $table->BigInteger('recipient_id')->unsigned();
+            $table->foreign('recipient_id')->references('id')->on('cheque_recipients')->onDelete('cascade');
             $table->date('exchange_date')->nullable();
-            $table->string('cheque_recipient')->nullable();
             $table->string('amount')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();

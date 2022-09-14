@@ -20,7 +20,7 @@ class ChequeController extends Controller
     {
         if ($request->ajax()) {
 
-            $data = Cheque::with('bank')->select('cheques.*');
+            $data = Cheque::with('bank')->with('recipient')->select('cheques.*');
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->editColumn('created_at', function ($request) {
@@ -29,6 +29,10 @@ class ChequeController extends Controller
                 ->editColumn('bank', function($data)
                 {
                     return $data->bank->bank_name;
+                })
+                ->editColumn('recipient', function($data)
+                {
+                    return $data->recipient->name;
                 })
                 ->editColumn('status', function($data)
                 {
@@ -74,16 +78,15 @@ class ChequeController extends Controller
 
             $date = date_format(date_create($request->exchange_date),"Y/m/d H:i:s");
 
+            $recipient = ChequeRecipient::create([
+                'name' => $request->cheque_recipient,
+            ]);
             Cheque::create([
                 'cheque_number' => $request->cheque_number,
                 'bank_id' => $request->bank_id,
                 'exchange_date' => $date,
-                'cheque_recipient' => $request->cheque_recipient,
+                'recipient_id' => $recipient->id,
                 'amount' => $request->amount,
-            ]);
-
-            ChequeRecipient::create([
-                'name' => $request->cheque_recipient,
             ]);
 
             return response()->json(['success' => 'تمت الاضافة بنجاح']);
@@ -101,7 +104,14 @@ class ChequeController extends Controller
         }else{
             return response()->json(1);
         }
+    }
 
+    public function recipient_cheques($recipient_id){
+        $recipient = ChequeRecipient::query()->findOrFail($recipient_id);
+        $data = Cheque::query()->where('cheque_recipient',$recipient->name)->get();
+        return Datatables::of($data)
+            ->addIndexColumn()
+            ->make(true);
     }
 
     /**
@@ -135,12 +145,14 @@ class ChequeController extends Controller
 
         try{
             $cheque = Cheque::query()->findOrFail($id);
-
+            $recipient = $cheque->recipient->update([
+                'name' => $request->edit_cheque_recipient,
+            ]);
 //            $date = date_format(date_create($request->exchange_date),"Y/m/d H:i:s");
             $cheque->cheque_number = $request->edit_cheque_number;
             $cheque->bank_id = $request->edit_bank_id;
             $cheque->exchange_date = $request->edit_exchange_date;
-            $cheque->cheque_recipient = $request->edit_cheque_recipient;
+            $cheque->cheque_recipient = $recipient->id;
             $cheque->amount = $request->editAmount;
 
             $cheque->save();
@@ -162,7 +174,7 @@ class ChequeController extends Controller
         if ($request->ajax()) {
 
             $data = Cheque::query()->whereBetween('exchange_date',[Carbon::now(),Carbon::now()->addDays(5)])
-                ->with('bank')->select('cheques.*');
+                ->with('bank')->with('recipient')->select('cheques.*');
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -172,6 +184,10 @@ class ChequeController extends Controller
                 ->editColumn('bank', function($data)
                 {
                     return $data->bank->bank_name;
+                })
+                ->editColumn('recipient', function($data)
+                {
+                    return $data->recipient->name;
                 })
                 ->editColumn('status', function($data)
                 {
@@ -200,7 +216,7 @@ class ChequeController extends Controller
         if ($request->ajax()) {
 
             $data = Cheque::query()->where('exchange_date','<',Carbon::now())
-                ->with('bank')->select('cheques.*');
+                ->with('bank')->with('recipient')->select('cheques.*');
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -210,6 +226,10 @@ class ChequeController extends Controller
                 ->editColumn('bank', function($data)
                 {
                     return $data->bank->bank_name;
+                })
+                ->editColumn('recipient', function($data)
+                {
+                    return $data->recipient->name;
                 })
                 ->editColumn('status', function($data)
                 {
@@ -238,7 +258,7 @@ class ChequeController extends Controller
         if ($request->ajax()) {
 
             $data = Cheque::query()->whereBetween('exchange_date',[Carbon::now(),Carbon::now()->addMonths(6)])
-                ->with('bank')->select('cheques.*');
+                ->with('bank')->with('recipient')->select('cheques.*');
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -248,6 +268,10 @@ class ChequeController extends Controller
                 ->editColumn('bank', function($data)
                 {
                     return $data->bank->bank_name;
+                })
+                ->editColumn('recipient', function($data)
+                {
+                    return $data->recipient->name;
                 })
                 ->editColumn('status', function($data)
                 {

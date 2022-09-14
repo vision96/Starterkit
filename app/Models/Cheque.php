@@ -15,4 +15,9 @@ class Cheque extends Model
     {
         return $this->belongsTo(Bank::class);
     }
+
+    public function recipient()
+    {
+        return $this->belongsTo(ChequeRecipient::class);
+    }
 }
