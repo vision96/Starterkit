@@ -53,4 +53,5 @@ return [
     "Close" => "إغلاق",
     "Edit_cheque" => "تعديل شيك",
     "Edit" => "تعديل",
+    "View_all" => "عرض الكل"
 ];

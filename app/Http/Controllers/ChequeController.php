@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bank;
 use App\Models\Cheque;
 use App\Models\ChequeRecipient;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -42,7 +43,9 @@ class ChequeController extends Controller
                 ->make(true);
 
         }
-        return view('view-cheques');
+        $add_cheque = true;
+
+        return view('view-cheques',compact('add_cheque'));
     }
     /**
      * @return \Illuminate\Http\Response
@@ -130,7 +133,7 @@ class ChequeController extends Controller
             'editAmount' => 'required',
         ]);
 
-//        try{
+        try{
             $cheque = Cheque::query()->findOrFail($id);
 
 //            $date = date_format(date_create($request->exchange_date),"Y/m/d H:i:s");
@@ -143,9 +146,124 @@ class ChequeController extends Controller
             $cheque->save();
 
             return response()->json(['success'=>'تم التحديث بنجاح']);
-//        }
-//        catch(\exception $ex){
-//            return response()->json(['error'=>'هناك خطا ما يرجى المحاولة لاحقا']);
-//        }
+        }
+        catch(\exception $ex){
+            return response()->json(['error'=>'هناك خطا ما يرجى المحاولة لاحقا']);
+        }
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function chequesDue5Days(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $data = Cheque::query()->whereBetween('exchange_date',[Carbon::now(),Carbon::now()->addDays(5)])
+                ->with('bank')->select('cheques.*');
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->editColumn('created_at', function ($request) {
+                    return $request->created_at->format('Y-m-d');
+                })
+                ->editColumn('bank', function($data)
+                {
+                    return $data->bank->bank_name;
+                })
+                ->editColumn('status', function($data)
+                {
+                    if($data->status == 0){
+                        return trans('translation.paid');
+                    }elseif ($data->status == 1){
+                        return trans('translation.canceled');
+                    }
+                })
+                ->addColumn('action', 'due5daysCheques.action')
+                ->rawColumns(['action'])
+                ->make(true);
+
+        }
+
+        return view('due-cheques');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dueCheques(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $data = Cheque::query()->where('exchange_date','<',Carbon::now())
+                ->with('bank')->select('cheques.*');
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->editColumn('created_at', function ($request) {
+                    return $request->created_at->format('Y-m-d');
+                })
+                ->editColumn('bank', function($data)
+                {
+                    return $data->bank->bank_name;
+                })
+                ->editColumn('status', function($data)
+                {
+                    if($data->status == 0){
+                        return trans('translation.paid');
+                    }elseif ($data->status == 1){
+                        return trans('translation.canceled');
+                    }
+                })
+                ->addColumn('action', 'dueCheques.action')
+                ->rawColumns(['action'])
+                ->make(true);
+
+        }
+
+        return view('due-cheques');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function chequesDue6Months(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $data = Cheque::query()->whereBetween('exchange_date',[Carbon::now(),Carbon::now()->addMonths(6)])
+                ->with('bank')->select('cheques.*');
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->editColumn('created_at', function ($request) {
+                    return $request->created_at->format('Y-m-d');
+                })
+                ->editColumn('bank', function($data)
+                {
+                    return $data->bank->bank_name;
+                })
+                ->editColumn('status', function($data)
+                {
+                    if($data->status == 0){
+                        return trans('translation.paid');
+                    }elseif ($data->status == 1){
+                        return trans('translation.canceled');
+                    }
+                })
+                ->addColumn('action', 'due6monthsCheques.action')
+                ->rawColumns(['action'])
+                ->make(true);
+
+        }
+
+        return view('due-cheques');
+    }
+
 }

@@ -41,7 +41,7 @@ class HomeController extends Controller
         $cheques_count = Cheque::all()->count();
         $cheques_due_5days_count = Cheque::all()->whereBetween('exchange_date',[Carbon::now(),Carbon::now()->addDays(5)])->count();
         $cheques_due_6months_count = Cheque::all()->whereBetween('exchange_date',[Carbon::now(),Carbon::now()->addMonths(6)])->count();
-        $due_cheques_count = Cheque::all()->where('status','=',1)->count(); //status of مستحق
+        $due_cheques_count = Cheque::all()->where('exchange_date','<',Carbon::now())->count();
         return view('index',compact('cheques_count','cheques_due_5days_count','cheques_due_6months_count','due_cheques_count'));
     }
 

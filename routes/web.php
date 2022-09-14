@@ -50,6 +50,10 @@ Route::get('/cheque-number/{id}', [App\Http\Controllers\ChequeController::class,
 Route::get('cheques/{id}/edit', [App\Http\Controllers\ChequeController::class, 'edit'])->name('cheque.edit');
 Route::post('cheques/{id}', [App\Http\Controllers\ChequeController::class, 'update'])->name('cheque.update');
 
+Route::get('/chequesDue5Days', [App\Http\Controllers\ChequeController::class, 'chequesDue5Days'])->name('chequesDue5Days');
+Route::get('/dueCheques', [App\Http\Controllers\ChequeController::class, 'dueCheques'])->name('dueCheques');
+Route::get('/chequesDue6Months', [App\Http\Controllers\ChequeController::class, 'chequesDue6Months'])->name('chequesDue6Months');
+
 //end cheque routes
 
 //start chequeRecipients routes
