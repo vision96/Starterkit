@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('cheques', function (Blueprint $table) {
             $table->id();
-            $table->string('cheque_number')->unique();
+            $table->string('cheque_number');
             $table->BigInteger('bank_id')->unsigned();
             $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
             $table->date('exchange_date')->nullable();

@@ -1,3 +1,6 @@
+<?php
+$banks = \App\Models\Bank::all();
+?>
 <div id="editChequeModal" class="modal fade" tabindex="-1" aria-labelledby="editChequeLabel" aria-hidden="true">
     <form method="POST" id="editCheque" class="needs-validation" novalidate>
         @csrf
@@ -9,13 +12,13 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <input type="hidden" id="id" name="id" value="">
+                        <input type="hidden" id="editId" name="id" value="">
 
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label class="control-label required"
                                        style="font-size: 17px;">@lang('translation.Bank')</label>
-                                <select class="form-control select2" name="bank_id">
+                                <select class="form-control select2" name="edit_bank_id" id="edit_bank_id">
                                     <option>@lang('translation.select')</option>
                                     @isset($banks)
                                         @foreach($banks as $bank)
@@ -29,15 +32,15 @@
                             <div class="mb-3">
                                 <label for="cheque_number" class="form-label required"
                                        style="font-size: 17px;">@lang('translation.cheque_number')</label>
-                                <input type="text" class="form-control" id="cheque_number" name="cheque_number"
-                                       placeholder="" required>
+                                <input type="text" class="form-control" id="edit_cheque_number" name="edit_cheque_number"
+                                     value="" placeholder="" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="amount" class="form-label required"
                                        style="font-size: 17px;">@lang('translation.amount')</label>
-                                <input type="text" class="form-control" id="amount" name="amount"
+                                <input type="text" class="form-control" id="editAmount" name="editAmount"
                                        placeholder="" required>
                             </div>
                         </div>
@@ -46,9 +49,9 @@
                                 <label for="datepicker" class="form-label required"
                                        style="font-size: 17px;">@lang('translation.exchange_date')</label>
                                 <div class="docs-datepicker">
-                                    <div class="input-group date" id="datepicker">
-                                        <input type="text" class="form-control docs-date" name="exchange_date"
-                                               placeholder="Pick a date" autocomplete="off">
+                                    <div class="input-group date" id="datepicker2">
+                                        <input type="text" class="form-control docs-date" name="edit_exchange_date"
+                                            id="edit_exchange_date" placeholder="Pick a date" autocomplete="off">
                                         <button type="button" class="btn btn-secondary docs-datepicker-trigger"
                                                 disabled>
                                             <i class="mdi mdi-calendar" aria-hidden="true"></i>
@@ -63,8 +66,8 @@
                             <div class="mb-3">
                                 <label for="cheque_recipient" class="form-label required"
                                        style="font-size: 17px;">@lang('translation.cheque_recipient')</label>
-                                <input type="text" class="form-control" id="cheque_recipient"
-                                       name="cheque_recipient" placeholder="" required>
+                                <input type="text" class="form-control" id="edit_cheque_recipient"
+                                       name="edit_cheque_recipient" placeholder="" required>
                             </div>
                         </div>
                     </div>

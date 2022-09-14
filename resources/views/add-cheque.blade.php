@@ -71,7 +71,7 @@ $banks = \App\Models\Bank::all();
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">@lang('translation.Save')</button>
+                    <button type="submit" class="btn btn-primary" id="btnSave">@lang('translation.Save')</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('translation.Close')</button>
                 </div>
             </div><!-- /.modal-content -->

@@ -65,10 +65,14 @@
 
     <script type="text/javascript">
 
-        $(function () {
-            $('#datepicker').datepicker();
+        $('#datepicker').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
         });
-
+        $('#datepicker2').datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true
+        });
         $(function () {
 
             var table = $('.data-table').DataTable({
@@ -192,12 +196,15 @@
                 },
                 datatype: "json",
                 success: function(response) {
-                    $("#id").val(response.id);
-                    $("#cheque_number").val(response.cheque_number);
-                    $("#bank_id").val(response.bank_id);
-                    $("#exchange_date").val(response.exchange_date);
-                    $("#cheque_recipient").val(response.cheque_recipient);
-                    $("#amount").val(response.amount);
+                    $("#editId").val(response.id);
+                    $("#edit_cheque_number").val(response.cheque_number);
+                    $("#edit_bank_id").val(response.bank_id);
+                    $("#edit_exchange_date").val(response.exchange_date);
+                    $("#edit_cheque_recipient").val(response.cheque_recipient);
+                    $("#editAmount").val(response.amount);
+                    var url = '{{route("cheque.update",":id")}}';
+                    url = url.replace(':id',response.id);
+                    $('#editCheque').data('url',url);
                     $('#editChequeModal').modal('show');
                 },
                 error: function(response) {
@@ -212,22 +219,24 @@
             });
 
         }
-
+        $(".modal").on("hidden.bs.modal", function () {
+                $(".modal-backdrop").remove();
+        });
         $("#editCheque").validate({
             rules: {
-                cheque_number: {
+                edit_cheque_number: {
                     required: true,
                 },
-                bank_id: {
+                edit_bank_id: {
                     required: true,
                 },
-                exchange_date: {
+                edit_exchange_date: {
                     required: true,
                 },
-                cheque_recipient: {
+                edit_cheque_recipient: {
                     required: true,
                 },
-                amount: {
+                editAmount: {
                     required: true,
                 },
             },
@@ -245,11 +254,9 @@
             },
             submitHandler: function (form) {
                 var formData = new FormData(form);
-                var id = $('#id').val();
-                var url = "{{ route('cheque.update', ":id") }}";
-                url = url.replace(':id', id);
+                var id = $('#editId').val();
                 $.ajax({
-                    url: url,
+                    url: 'cheques/'+id,
                     type: 'post',
                     data: formData,
                     contentType: false,
