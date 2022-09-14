@@ -36,7 +36,7 @@
                     <th>@lang('translation.amount')</th>
                     <th>@lang('translation.status')</th>
                     <th>@lang('translation.Created_at')</th>
-                    <th style="width: 150px;">@lang('translation.Actions')</th>
+                    <th>@lang('translation.Actions')</th>
                 </tr>
                 </thead>
                 <tbody>
