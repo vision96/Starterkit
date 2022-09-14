@@ -33,6 +33,8 @@
         </div>
 
     <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form method="POST" id="addRecipient">
+            @csrf
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -40,22 +42,27 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" id="addRecipient">
-                        @csrf
                         <div class="mb-3">
                             <label for="recipient_name">@lang('translation.Recipient_Name')</label>
                             <input id="recipient_name" type="text" class="form-control" name="recipient_name" autocomplete="on" placeholder="">
                         </div>
 
-                        <div class="mt-3 d-grid">
-                            <button class="btn btn-primary waves-effect waves-light" type="submit">@lang('translation.Save')</button>
-                        </div>
-                    </form>
+{{--                        <div class="mt-3 d-grid">--}}
+{{--                            <button class="btn btn-primary waves-effect waves-light" type="submit">@lang('translation.Save')</button>--}}
+{{--                        </div>--}}
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">@lang('translation.Save')</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('translation.Close')</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
+        </form>
     </div><!-- /.modal -->
     <div id="editRecipientModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form method="POST" id="editRecipient">
+            @csrf
+            @method('PUT')
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -63,9 +70,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" id="editRecipient">
-                        @csrf
-                        @method('PUT')
                         <input type="hidden" id="id" name="id" value="">
 
                         <div class="mb-3">
@@ -73,13 +77,17 @@
                             <input id="name" type="text" class="form-control" name="name" autocomplete="on" placeholder="">
                         </div>
 
-                        <div class="mt-3 d-grid">
-                            <button class="btn btn-primary waves-effect waves-light" type="submit">@lang('translation.Save')</button>
-                        </div>
-                    </form>
+{{--                        <div class="mt-3 d-grid">--}}
+{{--                            <button class="btn btn-primary waves-effect waves-light" type="submit">@lang('translation.Save')</button>--}}
+{{--                        </div>--}}
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">@lang('translation.Save')</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('translation.Close')</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
+        </form>
     </div><!-- /.modal -->
 
 @endsection
