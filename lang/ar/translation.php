@@ -53,5 +53,6 @@ return [
     "Close" => "إغلاق",
     "Edit_cheque" => "تعديل شيك",
     "Edit" => "تعديل",
-    "View_all" => "عرض الكل"
+    "View_all" => "عرض الكل",
+    "System_information"=> "معلومات النظام",
 ];

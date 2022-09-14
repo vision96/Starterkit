@@ -47,6 +47,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{route('system-information')}}" class="waves-effect">
+                        <i class="bx bx-shield-quarter"></i>
+                        <span key="t-system-information">@lang('translation.System_information')</span>
+                    </a>
+                </li>
+
             </ul>
         </div>
         <!-- Sidebar -->

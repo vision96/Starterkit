@@ -67,3 +67,9 @@ Route::get('/show-chequeRecipients', [App\Http\Controllers\ChequeRecipientContro
 //start settings
 Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings');
 //end settings
+
+//system information
+Route::get('/system-information', function () {
+    return view('system-information');
+})->name('system-information');
+//end system information
